@@ -1,0 +1,27 @@
+logging:
+  pattern:
+    level: INFO
+    console:
+  level:
+    com:example.skeleton: DEBUG
+    org.springframework:
+      batch: DEBUG
+
+spring:
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/batch
+    username: root
+    password: 1234
+  batch:
+    jdbc:
+      initialize-schema: always # 배치 테이블 자동 생성
+    job:
+      enabled: false # job 자동 실행 옵션, true 일때 names 값이 지정되어 있지 않으면 모두 실행한다.
+  jpa:
+    hibernate:
+      ddl-auto: update # DDL 전략
+    open-in-view: false # 지연 로딩 확장 금지
+    properties:
+      hibernate:
+        format_sql: true # sql query pretty option

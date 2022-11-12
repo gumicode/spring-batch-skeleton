@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration scan="true" scanPeriod="30 seconds">
+    <include resource="org/springframework/boot/logging/logback/defaults.xml"/>
+
+    <appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
+        <encoder>
+            <pattern>%clr(%d{yyyy-MM-dd HH:mm:ss.SSS}){faint} %clr(%5p) %clr(${PID:- }){magenta} %clr(---){faint} %clr([%15.15t]){faint} %clr(%-40.40logger{40}){cyan} %clr(:){faint} %m%n${LOG_EXCEPTION_CONVERSION_WORD:-%wEx}</pattern>
+            <charset>utf8</charset>
+        </encoder>
+    </appender>
+
+    <appender name="IMPORTANT_OUT" class="ch.qos.logback.core.ConsoleAppender">
+        <encoder>
+            <pattern>%clr(%d{yyyy-MM-dd HH:mm:ss.SSS}){faint} %clr(%5p) %clr(${PID:- }){magenta} %clr(---){faint} %clr([%15.15t]){faint} %clr(%-40.40logger{40}){cyan} %clr(:){faint} %clr(%m%n${LOG_EXCEPTION_CONVERSION_WORD:-%wEx}){red}</pattern>
+            <charset>utf8</charset>
+        </encoder>
+    </appender>
+
+    <root level="INFO">
+        <appender-ref ref="STDOUT"/>
+    </root>
+
+    <springProfile name="default">
+        <logger name="com.example.skeleton" level="DEBUG" additivity="false">
+            <appender-ref ref="IMPORTANT_OUT"/>
+        </logger>
+        <logger name="org.springframework.batch" level="DEBUG" />
+        <logger name="org.hibernate.SQL" level="DEBUG" />
+        <logger name="org.hibernate.SQL" level="DEBUG" />
+        <logger name="org.hibernate.tool.hbm2ddl" level="DEBUG"/>
+        <logger name="org.hibernate.type.descriptor.sql" level="TRACE" /> <!-- Hibernate 4,5 -->
+        <logger name="org.hibernate.orm.jdbc.bind" level="TRACE" /> <!-- Hibernate 6 -->
+        <logger name="org.hibernate.stat" level="DEBUG" />
+        <logger name="org.hibernate.SQL_SLOW" level="INFO" />
+    </springProfile>
+</configuration>
