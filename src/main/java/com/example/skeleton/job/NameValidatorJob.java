@@ -1,7 +1,7 @@
 package com.example.skeleton.job;
 
-import com.example.skeleton.global.incrementer.UniqueRunIdIncrementer;
 import com.example.skeleton.global.step.PrintJobParameterStep;
+import com.example.skeleton.global.validator.NameJobParametersValidator;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.batch.core.Job;
@@ -15,9 +15,9 @@ import java.util.Map;
 @Slf4j
 @Configuration
 @RequiredArgsConstructor
-public class UniqueIncrementerJob {
+public class NameValidatorJob {
 
-	public static final String BEAN_NAME = "UNIQUE_INCREMENTER_JOB";
+	public static final String BEAN_NAME = "NAME_VALIDATOR_JOB";
 	private final JobBuilderFactory jobBuilderFactory;
 	private final Map<String, Step> steps;
 
@@ -26,7 +26,7 @@ public class UniqueIncrementerJob {
 	public Job job() {
 		return jobBuilderFactory.get(BEAN_NAME)
 				.start(steps.get(PrintJobParameterStep.BEAN_NAME))
-				.incrementer(new UniqueRunIdIncrementer()) // 중복 실행 가능 옵션, 단 직접 JobLauncher 실행시 동작하지 않음
+				.validator(new NameJobParametersValidator())
 				.build();
 	}
 }

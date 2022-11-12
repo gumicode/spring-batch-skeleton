@@ -16,11 +16,12 @@ spring:
   batch:
     jdbc:
       initialize-schema: always # 배치 테이블 자동 생성
+      isolation-level-for-create: read_committed # isolation
     job:
       enabled: false # job 자동 실행 옵션, true 일때 names 값이 지정되어 있지 않으면 모두 실행한다.
   jpa:
     hibernate:
-      ddl-auto: update # DDL 전략
+      ddl-auto: create # DDL 전략
     open-in-view: false # 지연 로딩 확장 금지
     properties:
       hibernate:
