@@ -13,7 +13,7 @@ import org.springframework.context.annotation.Configuration;
 @Slf4j
 @Configuration
 @RequiredArgsConstructor
-public class TaskletStartLimitJob {
+public class StartLimitJob {
 
 	public static final String BEAN_NAME = "TASKLET_START_LIMIT_JOB";
 	private final JobBuilderFactory jobBuilderFactory;

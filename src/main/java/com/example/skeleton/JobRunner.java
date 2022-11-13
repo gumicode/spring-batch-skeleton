@@ -1,6 +1,7 @@
 package com.example.skeleton;
 
 import com.example.skeleton.job.AllowStartIfCompleteJob;
+import com.example.skeleton.job.JobStepJob;
 import com.example.skeleton.job.RepeatStatusJob;
 import com.example.skeleton.job.RuntimeExceptionJob;
 import lombok.RequiredArgsConstructor;
@@ -33,6 +34,6 @@ public class JobRunner implements ApplicationRunner {
 		jobParametersBuilder.addString("string", UUID.randomUUID().toString());
 		JobParameters jobParameters = jobParametersBuilder.toJobParameters();
 
-		jobLauncher.run(jobs.get(RepeatStatusJob.BEAN_NAME), jobParameters);
+		jobLauncher.run(jobs.get(JobStepJob.BEAN_NAME), jobParameters);
 	}
 }
