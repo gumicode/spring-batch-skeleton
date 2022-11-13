@@ -1,6 +1,7 @@
 package com.example.skeleton;
 
 import com.example.skeleton.job.AllowStartIfCompleteJob;
+import com.example.skeleton.job.RepeatStatusJob;
 import com.example.skeleton.job.RuntimeExceptionJob;
 import lombok.RequiredArgsConstructor;
 import org.springframework.batch.core.Job;
@@ -32,6 +33,6 @@ public class JobRunner implements ApplicationRunner {
 		jobParametersBuilder.addString("string", UUID.randomUUID().toString());
 		JobParameters jobParameters = jobParametersBuilder.toJobParameters();
 
-		jobLauncher.run(jobs.get(AllowStartIfCompleteJob.BEAN_NAME), jobParameters);
+		jobLauncher.run(jobs.get(RepeatStatusJob.BEAN_NAME), jobParameters);
 	}
 }

@@ -5,25 +5,40 @@ import com.example.skeleton.global.util.NamingUtil;
 import net.bytebuddy.utility.RandomString;
 import org.springframework.batch.core.configuration.annotation.StepScope;
 import org.springframework.batch.item.ItemReader;
-import org.springframework.stereotype.Component;
+import org.springframework.batch.item.support.ListItemReader;
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
 
-@StepScope
-@Component(ProductRandomCreateItemReader.BEAN_NAME)
-public class ProductRandomCreateItemReader implements ItemReader<ProductEntity> {
+import java.util.List;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
+
+@Configuration
+public class ProductRandomCreateItemReader {
 
 	public static final String BEAN_NAME = "PRODUCT_RANDOM_CREATE_ITEM_READER";
 
-	@Override
-	public ProductEntity read() {
+	@Bean(BEAN_NAME)
+	@StepScope
+	public ItemReader<ProductEntity> itemReader() {
+		return new ListItemReader<>(generateProductEntities());
+	}
 
-		String code = RandomString.make();
-		String name = NamingUtil.food();
-		String image = code + ".png";
+	private List<ProductEntity> generateProductEntities() {
+		int size = 10000000;
 
-		return ProductEntity.builder()
-				.code(code)
-				.name(name)
-				.image(image)
-				.build();
+		ProductEntity[] entities = new ProductEntity[size];
+		for (int i = 0; i < size; i++) {
+			String code = RandomString.make();
+			String name = NamingUtil.food();
+			String image = code + ".png";
+			ProductEntity productEntity = ProductEntity.builder()
+					.code(code)
+					.name(name)
+					.image(image)
+					.build();
+			entities[i] = productEntity;
+		}
+		return Stream.of(entities).collect(Collectors.toList());
 	}
 }
