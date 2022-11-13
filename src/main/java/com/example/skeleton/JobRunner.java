@@ -31,6 +31,6 @@ public class JobRunner implements ApplicationRunner {
 		jobParametersBuilder.addString("string", UUID.randomUUID().toString());
 		JobParameters jobParameters = jobParametersBuilder.toJobParameters();
 
-		jobLauncher.run(jobs.get(DeciderJob.BEAN_NAME), jobParameters);
+		jobLauncher.run(jobs.get(FlowBuilderJob.BEAN_NAME), jobParameters);
 	}
 }
