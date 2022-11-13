@@ -15,7 +15,7 @@ import java.util.Map;
 @Slf4j
 @Configuration
 @RequiredArgsConstructor
-public class NameValidatorJob {
+public class ValidatorJob {
 
 	public static final String BEAN_NAME = "NAME_VALIDATOR_JOB";
 	private final JobBuilderFactory jobBuilderFactory;

@@ -1,7 +1,6 @@
 package com.example.skeleton.job;
 
-import com.example.skeleton.global.step.PrintExecutionContextStep;
-import com.example.skeleton.global.step.PrintJobParameterStep;
+import com.example.skeleton.global.step.RuntimeExceptionStep;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.batch.core.BatchStatus;
@@ -19,9 +18,9 @@ import java.util.Map;
 @Slf4j
 @Configuration
 @RequiredArgsConstructor
-public class FailedStepExecutionJob {
+public class AllowStartIfCompleteJob {
 
-	public static final String BEAN_NAME = "FAILED_STEP_EXECUTION_JOB";
+	public static final String BEAN_NAME = "ALLOW_START_IF_COMPLETE_JOB";
 	private final JobBuilderFactory jobBuilderFactory;
 	private final StepBuilderFactory stepBuilderFactory;
 	private final Map<String, Step> steps;
@@ -30,29 +29,20 @@ public class FailedStepExecutionJob {
 	@Bean(BEAN_NAME)
 	public Job job() {
 		return jobBuilderFactory.get(BEAN_NAME)
-				.start(steps.get(PrintJobParameterStep.BEAN_NAME))
-				.next(failedStepExecutionStep())
-				.next(steps.get(PrintExecutionContextStep.BEAN_NAME))
+				.start(allowStartIfCompleteStep())
+				.next(steps.get(RuntimeExceptionStep.BEAN_NAME))
 				.build();
 	}
 
-	private Step failedStepExecutionStep() {
-		return stepBuilderFactory.get("FAILED_STEP_EXECUTION_STEP")
+	private Step allowStartIfCompleteStep() {
+		return stepBuilderFactory.get("ALLOW_START_IF_COMPLETE_STEP")
 				.tasklet((contribution, chunkContext) -> {
 
-					log.debug("***** fail step before");
-
-					// BATCH_STEP_EXECUTION 기록됨, BatchStatus 값을 변경하면, ExitStatus 에 영향을 미친다.
-					chunkContext.getStepContext().getStepExecution().setStatus(BatchStatus.FAILED);
-
-					// BATCH_STEP_EXECUTION 기록됨, 실제 다음 STEP 을 못가게 처리하는 코드이며 BatchStatus 값에 영향을 받는다.
-					contribution.setExitStatus(ExitStatus.FAILED);
-
-					log.debug("***** fail step after");
-
+					log.debug("***** allowStartIfCompleteStep ");
 					return RepeatStatus.FINISHED;
 
 				})
+				.allowStartIfComplete(true) // 동일한 JOB 실행시 성공 했더라도 항상 STEP 을 실행한다.
 				.build();
 	}
 }
