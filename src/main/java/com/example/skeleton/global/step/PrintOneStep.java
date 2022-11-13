@@ -23,7 +23,7 @@ public class PrintOneStep {
 				.tasklet((contribution, chunkContext) -> {
 
 					log.debug("***** printOneStep : 1");
-					contribution.setExitStatus(ExitStatus.NOOP);
+					contribution.setExitStatus(ExitStatus.COMPLETED);
 
 					return RepeatStatus.FINISHED;
 				})
