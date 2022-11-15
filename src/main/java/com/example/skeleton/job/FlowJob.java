@@ -14,6 +14,7 @@ import java.util.Map;
 
 /**
  * FLOW_JOB 으로 STEP 의 동작 순서를 지정할 수 있다.
+ * end() 를 붙이면 FlowJob 으로 만들어서 Step 의 순서를 지정할 수 있다.
  */
 @Slf4j
 @Configuration
