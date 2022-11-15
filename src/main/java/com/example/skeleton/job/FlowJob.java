@@ -12,6 +12,9 @@ import org.springframework.context.annotation.Configuration;
 
 import java.util.Map;
 
+/**
+ * FLOW_JOB 으로 STEP 의 동작 순서를 지정할 수 있다.
+ */
 @Slf4j
 @Configuration
 @RequiredArgsConstructor

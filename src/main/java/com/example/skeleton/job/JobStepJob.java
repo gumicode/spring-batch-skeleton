@@ -14,6 +14,9 @@ import org.springframework.context.annotation.Configuration;
 
 import java.util.Map;
 
+/**
+ * STEP 에서 JOB 을 실행 시킬 수 있다.
+ */
 @Slf4j
 @Configuration
 @RequiredArgsConstructor

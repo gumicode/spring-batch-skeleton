@@ -12,6 +12,11 @@ import org.springframework.context.annotation.Configuration;
 
 import java.util.Map;
 
+/**
+ * EXECUTION_CONTEXT 정보를 출력한다.
+ * JOB_EXECUTION_CONTEXT 에는 JOB_PARAMETER 정보가 포함되어 있다.
+ * 내가 직접 값을 넣을수도 있다.
+ */
 @Slf4j
 @Configuration
 @RequiredArgsConstructor

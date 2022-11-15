@@ -12,6 +12,9 @@ import org.springframework.context.annotation.Configuration;
 
 import java.util.Map;
 
+/**
+ * 동일한 파라미터가 들어 오더라도 무한 반복 실행할 수 있는 옵션이다.
+ */
 @Slf4j
 @Configuration
 @RequiredArgsConstructor

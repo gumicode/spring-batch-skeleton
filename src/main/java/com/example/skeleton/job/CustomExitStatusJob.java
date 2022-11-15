@@ -15,6 +15,9 @@ import org.springframework.context.annotation.Configuration;
 
 import java.util.Map;
 
+/**
+ * 내가 직접 정의한 EXIT_STATUS 를 사용할 수 있다.
+ */
 @Slf4j
 @Configuration
 @RequiredArgsConstructor

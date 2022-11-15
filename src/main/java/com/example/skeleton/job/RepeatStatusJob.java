@@ -10,8 +10,10 @@ import org.springframework.batch.repeat.RepeatStatus;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
-import java.util.Map;
-
+/**
+ * RepeatStatus 값이 FINISHED 가 나오기 전 까지 반복한다.
+ * CONTINUABLE 일 경우 무한 재실행 한다.
+ */
 @Slf4j
 @Configuration
 @RequiredArgsConstructor
@@ -20,7 +22,6 @@ public class RepeatStatusJob {
 	public static final String BEAN_NAME = "REPEAT_STATUS_JOB";
 	private final JobBuilderFactory jobBuilderFactory;
 	private final StepBuilderFactory stepBuilderFactory;
-	private final Map<String, Step> steps;
 
 
 	@Bean(BEAN_NAME)

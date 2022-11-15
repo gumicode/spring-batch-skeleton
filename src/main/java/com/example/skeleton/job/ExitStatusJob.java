@@ -16,6 +16,10 @@ import org.springframework.context.annotation.Configuration;
 
 import java.util.Map;
 
+/**
+ * BATCH_STATUS = 현재 배치 상태를 나타낸다. 배치 시작시, 종료시 값이 바뀐다.
+ * EXIT_STATS = 배치가 죄종적으로 끝났을 때 종료 상태를 의미한다.
+ */
 @Slf4j
 @Configuration
 @RequiredArgsConstructor

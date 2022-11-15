@@ -15,6 +15,9 @@ import org.springframework.context.annotation.Configuration;
 
 import java.util.Map;
 
+/**
+ * 동일한 JOB 실행시 성공 했더라도 항상 STEP 을 실행한다.
+ */
 @Slf4j
 @Configuration
 @RequiredArgsConstructor

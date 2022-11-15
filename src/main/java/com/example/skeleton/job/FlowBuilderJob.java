@@ -13,6 +13,10 @@ import org.springframework.context.annotation.Configuration;
 
 import java.util.Map;
 
+/**
+ * FLOW_JOB 으로 STEP 의 순서를 지정할 수도 있지만, 반대로 실질적인 순서는 FLOW 안에서 다 지정하고, 이후 JOB 에는 FLOW 만 추가해서
+ * 사용 하는 방법 도 있다. 동작 순서가 복잡 해 질 경우 이처럼 나누는 것이 가독성이 좋아진다.
+ */
 @Slf4j
 @Configuration
 @RequiredArgsConstructor

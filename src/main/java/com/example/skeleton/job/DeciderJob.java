@@ -14,6 +14,9 @@ import org.springframework.context.annotation.Configuration;
 
 import java.util.Map;
 
+/**
+ * FLOW 를 구성하기 복잡하다면 Decider 를 사용해볼 수 있다.
+ */
 @Slf4j
 @Configuration
 @RequiredArgsConstructor

@@ -10,6 +10,9 @@ import org.springframework.batch.repeat.RepeatStatus;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
+/**
+ * 하나의 JOB 내에서 동일한 STEP 을 여러번 실행할 경우 최대 실행 가능한 개수를 지정할 수 있다.
+ */
 @Slf4j
 @Configuration
 @RequiredArgsConstructor

@@ -12,6 +12,10 @@ import org.springframework.context.annotation.Configuration;
 
 import java.util.Map;
 
+/**
+ * JOB PARAMETER 에 대한 유효성 검사를 할 수 있다.
+ * STEP VALIDATOR 는 존재하지 않는다.
+ */
 @Slf4j
 @Configuration
 @RequiredArgsConstructor

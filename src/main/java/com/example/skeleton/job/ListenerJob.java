@@ -17,6 +17,9 @@ import org.springframework.context.annotation.Configuration;
 
 import java.util.Map;
 
+/**
+ * JOB_LISTENER , STEP_LISTENER 를 지정할 수 있다.
+ */
 @Slf4j
 @Configuration
 @RequiredArgsConstructor

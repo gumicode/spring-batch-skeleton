@@ -13,6 +13,10 @@ import org.springframework.context.annotation.Configuration;
 
 import java.util.Map;
 
+/**
+ * 보통 JOB 은 동일한 파라미터 값으로 들어 올 경우 실패지점 부터 다시 동작한다.
+ * preventRestart 옵션을 줄 경우 한번 실패하면 다시는 해당 JOB 을 실행할 수 없도록 처리한다.
+ */
 @Slf4j
 @Configuration
 @RequiredArgsConstructor
