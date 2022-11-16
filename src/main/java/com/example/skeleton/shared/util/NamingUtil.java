@@ -1,4 +1,4 @@
-package com.example.skeleton.shared.application.port.in;
+package com.example.skeleton.shared.util;
 
 import java.security.SecureRandom;
 import java.util.Arrays;

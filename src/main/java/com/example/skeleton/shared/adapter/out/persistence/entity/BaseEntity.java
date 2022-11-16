@@ -1,6 +1,9 @@
 package com.example.skeleton.shared.adapter.out.persistence.entity;
 
+import lombok.AllArgsConstructor;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.experimental.SuperBuilder;
 import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.annotation.LastModifiedDate;
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
@@ -9,19 +12,22 @@ import javax.persistence.*;
 import java.time.LocalDateTime;
 
 @Getter
+@SuperBuilder
 @MappedSuperclass
+@AllArgsConstructor
+@NoArgsConstructor
 @EntityListeners(AuditingEntityListener.class)
 public abstract class BaseEntity {
 
-	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Long id;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
 
-	@CreatedDate
-	protected LocalDateTime createDatetime;
+    @CreatedDate
+    private LocalDateTime createDatetime;
 
-	@LastModifiedDate
-	protected LocalDateTime updateDatetime;
+    @LastModifiedDate
+    private LocalDateTime updateDatetime;
 
-	protected boolean deleted = false;
+    private Boolean deleted;
 }

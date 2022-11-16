@@ -1,4 +1,4 @@
-package com.example.skeleton.shared.application.service.configuration;
+package com.example.skeleton.shared.configuration;
 
 import org.springframework.batch.core.launch.JobLauncher;
 import org.springframework.batch.core.launch.support.SimpleJobLauncher;
