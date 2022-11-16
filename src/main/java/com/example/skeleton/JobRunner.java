@@ -1,6 +1,6 @@
 package com.example.skeleton;
 
-import com.example.skeleton.job.*;
+import com.example.skeleton.feature.adapter.in.batch.FlowBuilderJob;
 import lombok.RequiredArgsConstructor;
 import org.springframework.batch.core.Job;
 import org.springframework.batch.core.JobParameters;
