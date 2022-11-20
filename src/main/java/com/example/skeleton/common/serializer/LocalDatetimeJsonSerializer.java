@@ -1,4 +1,4 @@
-package com.example.skeleton.shared.application.service.serializer;
+package com.example.skeleton.common.serializer;
 
 import com.fasterxml.jackson.core.JsonGenerator;
 import com.fasterxml.jackson.databind.JsonSerializer;

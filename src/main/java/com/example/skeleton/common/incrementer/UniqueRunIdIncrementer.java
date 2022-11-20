@@ -1,4 +1,4 @@
-package com.example.skeleton.shared.adapter.in.batch.incrementer;
+package com.example.skeleton.common.incrementer;
 
 import org.springframework.batch.core.JobParameters;
 import org.springframework.batch.core.JobParametersBuilder;

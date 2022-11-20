@@ -1,4 +1,4 @@
-package com.example.skeleton.shared.configuration;
+package com.example.skeleton.configuration;
 
 import org.springframework.batch.core.launch.JobLauncher;
 import org.springframework.batch.core.launch.support.SimpleJobLauncher;

@@ -1,4 +1,4 @@
-package com.example.skeleton.shared.application.service.serializer;
+package com.example.skeleton.common.serializer;
 
 import com.fasterxml.jackson.core.JacksonException;
 import com.fasterxml.jackson.core.JsonParser;

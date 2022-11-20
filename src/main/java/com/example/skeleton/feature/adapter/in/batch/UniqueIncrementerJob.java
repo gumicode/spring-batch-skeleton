@@ -1,6 +1,6 @@
 package com.example.skeleton.feature.adapter.in.batch;
 
-import com.example.skeleton.shared.adapter.in.batch.incrementer.UniqueRunIdIncrementer;
+import com.example.skeleton.common.incrementer.UniqueRunIdIncrementer;
 import com.example.skeleton.feature.adapter.in.batch.step.PrintJobParameterStep;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;

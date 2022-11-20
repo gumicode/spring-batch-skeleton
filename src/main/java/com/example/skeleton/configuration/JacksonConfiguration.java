@@ -1,7 +1,7 @@
-package com.example.skeleton.shared.configuration;
+package com.example.skeleton.configuration;
 
-import com.example.skeleton.shared.application.service.serializer.LocalDatetimeJsonDeserializer;
-import com.example.skeleton.shared.application.service.serializer.LocalDatetimeJsonSerializer;
+import com.example.skeleton.common.serializer.LocalDatetimeJsonDeserializer;
+import com.example.skeleton.common.serializer.LocalDatetimeJsonSerializer;
 import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.SerializationFeature;

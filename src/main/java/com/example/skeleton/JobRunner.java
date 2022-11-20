@@ -1,10 +1,6 @@
 package com.example.skeleton;
 
-import com.example.skeleton.feature.adapter.in.batch.FlowBuilderJob;
 import com.example.skeleton.product.adapter.in.batch.ProductRandomCreateJob;
-import com.example.skeleton.product.adapter.in.batch.step.writer.ProductInsertBatchItemWriter;
-import com.example.skeleton.product.adapter.out.persistence.entity.ProductEntity;
-import com.example.skeleton.shared.application.service.converter.BeanMappedConverter;
 import lombok.RequiredArgsConstructor;
 import org.springframework.batch.core.Job;
 import org.springframework.batch.core.JobParameters;
@@ -33,6 +29,8 @@ public class JobRunner implements ApplicationRunner {
 		jobParametersBuilder.addDouble("double", 0.0);
 		jobParametersBuilder.addDate("date", new Date());
 		jobParametersBuilder.addString("string", UUID.randomUUID().toString());
+		jobParametersBuilder.addLong("chunk", 100L);
+		jobParametersBuilder.addLong("createSize", 1000L);
 		JobParameters jobParameters = jobParametersBuilder.toJobParameters();
 
 		jobLauncher.run(jobs.get(ProductRandomCreateJob.BEAN_NAME), jobParameters);

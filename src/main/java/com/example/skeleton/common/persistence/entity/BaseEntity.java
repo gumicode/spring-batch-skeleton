@@ -1,4 +1,4 @@
-package com.example.skeleton.shared.adapter.out.persistence.entity;
+package com.example.skeleton.common.persistence.entity;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;

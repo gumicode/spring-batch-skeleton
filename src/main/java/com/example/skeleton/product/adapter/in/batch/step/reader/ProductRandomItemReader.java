@@ -1,11 +1,12 @@
 package com.example.skeleton.product.adapter.in.batch.step.reader;
 
+import com.example.skeleton.common.util.NamingUtil;
 import com.example.skeleton.product.adapter.out.persistence.entity.ProductEntity;
-import com.example.skeleton.shared.util.NamingUtil;
 import net.bytebuddy.utility.RandomString;
 import org.springframework.batch.core.configuration.annotation.StepScope;
 import org.springframework.batch.item.ItemReader;
 import org.springframework.batch.item.support.ListItemReader;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
@@ -21,15 +22,14 @@ public class ProductRandomItemReader {
 
     @Bean(BEAN_NAME)
     @StepScope
-    public ItemReader<ProductEntity> itemReader() {
-        return new ListItemReader<>(generateProductEntities());
+    public ItemReader<ProductEntity> itemReader(@Value("#{jobParameters[createSize]}") final Integer createSize) {
+        return new ListItemReader<>(generateProductEntities(createSize));
     }
 
-    private List<ProductEntity> generateProductEntities() {
-        int size = 100;
+    private List<ProductEntity> generateProductEntities(final Integer createSize) {
 
-        ProductEntity[] entities = new ProductEntity[size];
-        for (int i = 0; i < size; i++) {
+        ProductEntity[] entities = new ProductEntity[createSize];
+        for (int i = 0; i < createSize; i++) {
             String code = RandomString.make();
             String name = NamingUtil.food();
             String image = code + ".png";
