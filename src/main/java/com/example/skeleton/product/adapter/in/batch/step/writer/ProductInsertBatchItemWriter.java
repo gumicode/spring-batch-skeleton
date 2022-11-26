@@ -1,7 +1,7 @@
 package com.example.skeleton.product.adapter.in.batch.step.writer;
 
-import com.example.skeleton.product.adapter.out.persistence.entity.ProductEntity;
 import com.example.skeleton.common.converter.JdbcBeanMappedConverter;
+import com.example.skeleton.product.adapter.out.persistence.entity.ProductEntity;
 import lombok.RequiredArgsConstructor;
 import org.springframework.batch.core.configuration.annotation.StepScope;
 import org.springframework.batch.item.ItemWriter;
@@ -23,7 +23,7 @@ public class ProductInsertBatchItemWriter {
     public ItemWriter<ProductEntity> itemWriter() {
         return new JdbcBatchItemWriterBuilder<ProductEntity>()
                 .dataSource(dataSource)
-                .sql(new JdbcBeanMappedConverter(ProductEntity.class).insertSql("id", "code", "name", "image", "deleted"))
+                .sql(new JdbcBeanMappedConverter(ProductEntity.class).insertSql())
                 .beanMapped()
                 .build();
     }
