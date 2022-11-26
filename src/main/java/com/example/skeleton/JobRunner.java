@@ -30,7 +30,7 @@ public class JobRunner implements ApplicationRunner {
 		jobParametersBuilder.addDate("date", new Date());
 		jobParametersBuilder.addString("string", UUID.randomUUID().toString());
 		jobParametersBuilder.addLong("chunk", 100L);
-		jobParametersBuilder.addLong("createSize", 1000L);
+		jobParametersBuilder.addLong("createSize", 10L);
 		JobParameters jobParameters = jobParametersBuilder.toJobParameters();
 
 		jobLauncher.run(jobs.get(ProductRandomCreateJob.BEAN_NAME), jobParameters);

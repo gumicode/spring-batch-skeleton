@@ -23,7 +23,7 @@ public class ProductInsertBatchItemWriter {
     public ItemWriter<ProductEntity> itemWriter() {
         return new JdbcBatchItemWriterBuilder<ProductEntity>()
                 .dataSource(dataSource)
-                .sql(new JdbcBeanMappedConverter(ProductEntity.class).insertSql("id", "code", "name", "image"))
+                .sql(new JdbcBeanMappedConverter(ProductEntity.class).insertSql("id", "code", "name", "image", "deleted"))
                 .beanMapped()
                 .build();
     }
