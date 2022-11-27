@@ -18,21 +18,19 @@ import java.util.UUID;
 @RequiredArgsConstructor
 public class JobRunner implements ApplicationRunner {
 
-	private final JobLauncher jobLauncher;
-	private final Map<String, Job> jobs;
+    private final JobLauncher jobLauncher;
+    private final Map<String, Job> jobs;
 
-	@Override
-	public void run(ApplicationArguments args) throws Exception {
+    @Override
+    public void run(ApplicationArguments args) throws Exception {
 
-		JobParametersBuilder jobParametersBuilder = new JobParametersBuilder(); // incrementer 동작을 위해 추가
-		jobParametersBuilder.addLong("long", 0L);
-		jobParametersBuilder.addDouble("double", 0.0);
-		jobParametersBuilder.addDate("date", new Date());
-		jobParametersBuilder.addString("string", UUID.randomUUID().toString());
-		jobParametersBuilder.addLong("chunk", 100L);
-		jobParametersBuilder.addLong("createSize", 10L);
-		JobParameters jobParameters = jobParametersBuilder.toJobParameters();
+        JobParametersBuilder jobParametersBuilder = new JobParametersBuilder(); // incrementer 동작을 위해 추가
+        jobParametersBuilder.addLong("long", 0L);
+        jobParametersBuilder.addDouble("double", 0.0);
+        jobParametersBuilder.addDate("date", new Date());
+        jobParametersBuilder.addString("string", UUID.randomUUID().toString());
+        JobParameters jobParameters = jobParametersBuilder.toJobParameters();
 
-		jobLauncher.run(jobs.get(ProductRandomCreateJob.BEAN_NAME), jobParameters);
-	}
+        jobLauncher.run(jobs.get(ProductRandomCreateJob.BEAN_NAME), jobParameters);
+    }
 }
