@@ -1,18 +1,11 @@
-logging:
-  pattern:
-    level: INFO
-    console:
-  level:
-    com:example.skeleton: DEBUG
-    org.springframework:
-      batch: INFO
-
 spring:
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
     url: jdbc:mysql://localhost:3306/batch?rewriteBatchedStatements=true
     username: root
     password: 1234
+    hikari:
+      maximum-pool-size: 20 # hikariCP connection pool
   batch:
     jdbc:
       initialize-schema: always # 배치 테이블 자동 생성

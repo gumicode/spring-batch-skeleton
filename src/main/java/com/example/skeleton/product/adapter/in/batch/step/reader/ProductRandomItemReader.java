@@ -21,6 +21,7 @@ public class ProductRandomItemReader {
     public static final String BEAN_NAME = "PRODUCT_RANDOM_ITEM_READER";
 
     @Bean(BEAN_NAME)
+    @StepScope
     public ItemReader<ProductEntity> itemReader() {
         return new ListItemReader<>(generateProductEntities());
     }
