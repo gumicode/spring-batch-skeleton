@@ -1,6 +1,6 @@
 package com.example.skeleton;
 
-import com.example.skeleton.product.adapter.in.batch.ProductCopyJob;
+import com.example.skeleton.feature.adapter.in.batch.ExceptionHandlerJob;
 import lombok.RequiredArgsConstructor;
 import org.springframework.batch.core.Job;
 import org.springframework.batch.core.JobParameters;
@@ -31,6 +31,6 @@ public class JobRunner implements ApplicationRunner {
         jobParametersBuilder.addString("string", UUID.randomUUID().toString());
         JobParameters jobParameters = jobParametersBuilder.toJobParameters();
 
-        jobLauncher.run(jobs.get(ProductCopyJob.BEAN_NAME), jobParameters);
+        jobLauncher.run(jobs.get(ExceptionHandlerJob.BEAN_NAME), jobParameters);
     }
 }
