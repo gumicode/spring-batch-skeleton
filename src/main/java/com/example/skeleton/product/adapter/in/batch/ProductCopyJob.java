@@ -11,6 +11,9 @@ import org.springframework.context.annotation.Configuration;
 
 import java.util.Map;
 
+/**
+ * ProductEntity 를 가져와서 ProductEntity 를 write 하는 기능
+ */
 @Slf4j
 @Configuration
 @RequiredArgsConstructor

@@ -22,7 +22,7 @@ public class ProductRandomItemReader {
 
     @Bean(BEAN_NAME)
     @StepScope
-    public ItemReader<ProductEntity> itemReader() {
+    public ListItemReader<ProductEntity> itemReader() {
         return new ListItemReader<>(generateProductEntities());
     }
 

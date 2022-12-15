@@ -15,6 +15,9 @@ import org.springframework.context.annotation.Configuration;
 
 import java.util.Map;
 
+/**
+ * 랜덤으로 ProductEntity 를 생성하여 DB 에 write 하는 job
+ */
 @Slf4j
 @Configuration
 @RequiredArgsConstructor

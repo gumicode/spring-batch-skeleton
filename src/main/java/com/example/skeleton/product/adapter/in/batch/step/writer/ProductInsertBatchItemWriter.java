@@ -5,6 +5,7 @@ import com.example.skeleton.product.adapter.out.persistence.entity.ProductEntity
 import lombok.RequiredArgsConstructor;
 import org.springframework.batch.core.configuration.annotation.StepScope;
 import org.springframework.batch.item.ItemWriter;
+import org.springframework.batch.item.database.JdbcBatchItemWriter;
 import org.springframework.batch.item.database.builder.JdbcBatchItemWriterBuilder;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -20,7 +21,7 @@ public class ProductInsertBatchItemWriter {
 
     @Bean(BEAN_NAME)
     @StepScope
-    public ItemWriter<ProductEntity> itemWriter() {
+    public JdbcBatchItemWriter<ProductEntity> itemWriter() {
         return new JdbcBatchItemWriterBuilder<ProductEntity>()
                 .dataSource(dataSource)
                 .sql(new JdbcBeanMappedConverter(ProductEntity.class).insertSql())
