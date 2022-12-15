@@ -113,7 +113,7 @@ public class JdbcBeanMappedConverter {
 
     private String fieldToColumn(final Field field) {
         Column columnAnnotation = field.getAnnotation(Column.class);
-        if (columnAnnotation != null && columnAnnotation.name() != null) {
+        if (columnAnnotation != null && columnAnnotation.name() != null && !"".equals(columnAnnotation.name())) {
             return columnAnnotation.name();
         }
         return CaseFormat.UPPER_CAMEL.to(CaseFormat.LOWER_UNDERSCORE, field.getName());
