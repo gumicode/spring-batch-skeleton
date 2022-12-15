@@ -1,7 +1,7 @@
 package com.example.skeleton.product.adapter.in.batch.step;
 
 import com.example.skeleton.common.CommonBatchParameter;
-import com.example.skeleton.product.adapter.in.batch.step.reader.ProductItemReader;
+import com.example.skeleton.product.adapter.in.batch.step.reader.ProductQuerydslNoOffsetItemReader;
 import com.example.skeleton.product.adapter.in.batch.step.writer.ProductInsertBatchItemWriter;
 import com.example.skeleton.product.adapter.out.persistence.entity.ProductEntity;
 import lombok.RequiredArgsConstructor;
@@ -31,7 +31,7 @@ public class ProductCopyStep {
     public Step step() {
         return stepBuilderFactory.get(BEAN_NAME)
                 .<ProductEntity, ProductEntity>chunk(CommonBatchParameter.CHUNK)
-                .reader(productItemReaders.get(ProductItemReader.BEAN_NAME))
+                .reader(productItemReaders.get(ProductQuerydslNoOffsetItemReader.BEAN_NAME))
                 .writer(productItemWriters.get(ProductInsertBatchItemWriter.BEAN_NAME))
                 .taskExecutor(taskExecutor)
                 .throttleLimit(CommonBatchParameter.THROTTLE_LIMIT)
