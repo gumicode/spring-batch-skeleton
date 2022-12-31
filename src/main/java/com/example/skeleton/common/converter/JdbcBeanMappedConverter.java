@@ -21,7 +21,7 @@ public class JdbcBeanMappedConverter {
     private static final String UPDATE_QUERY = "update %s set %s where %s";
     private final Class<?> persistence;
 
-    public JdbcBeanMappedConverter(Class<?> persistence) {
+    public JdbcBeanMappedConverter(final Class<?> persistence) {
         Entity entityAnnotation = persistence.getAnnotation(Entity.class);
         if (entityAnnotation == null) {
             throw new RuntimeException(persistence.getName() + "is not entity");

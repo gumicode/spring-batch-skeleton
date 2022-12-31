@@ -20,10 +20,10 @@ import java.time.LocalDateTime;
 public abstract class BaseEntity {
 
     @CreatedDate
-    private LocalDateTime createDatetime;
+    private LocalDateTime createDatetime = LocalDateTime.now();
 
     @LastModifiedDate
-    private LocalDateTime updateDatetime;
+    private LocalDateTime updateDatetime = LocalDateTime.now();
 
-    private Boolean deleted;
+    private Boolean deleted = false;
 }

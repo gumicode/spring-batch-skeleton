@@ -21,13 +21,13 @@ public class ProductFlatFileItemWriter {
     public FlatFileItemWriter<ProductEntity> itemWriter() {
         return new FlatFileItemWriterBuilder<ProductEntity>()
                 .name(BEAN_NAME)
-                .resource(new FileSystemResource("product.csv"))
+                .resource(new FileSystemResource("export/product.csv"))
                 .shouldDeleteIfEmpty(false) // 값이 없다면 삭제할지 정하는 옵션, true : 삭제 / false : 삭제 안함
                 .append(false) // 동일한 파일이 있을 경우 row 를 추가할 건지, 삭제후 새로 작성할 건지 정하는 옵션, true : row 추가 / false : 삭제후 다시 작성
                 .delimited()
                 .delimiter(",") // 컬럼 구분값
-                .names(FlatFileItemConverter.names(ProductEntity.class.getDeclaredFields()))
-                .headerCallback(writer -> writer.write(FlatFileItemConverter.headers(ProductEntity.class.getDeclaredFields(), ",")))
+                .names(FlatFileItemConverter.writerNames(ProductEntity.class))
+                .headerCallback(writer -> writer.write(FlatFileItemConverter.writerHeaders(ProductEntity.class, ",")))
                 .build();
     }
 }
