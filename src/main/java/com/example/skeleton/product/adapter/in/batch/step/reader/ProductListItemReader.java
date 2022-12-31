@@ -5,7 +5,6 @@ import com.example.skeleton.common.util.NamingUtil;
 import com.example.skeleton.product.adapter.out.persistence.entity.ProductEntity;
 import net.bytebuddy.utility.RandomString;
 import org.springframework.batch.core.configuration.annotation.StepScope;
-import org.springframework.batch.item.ItemReader;
 import org.springframework.batch.item.support.ListItemReader;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -16,9 +15,9 @@ import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 @Configuration
-public class ProductRandomItemReader {
+public class ProductListItemReader {
 
-    public static final String BEAN_NAME = "PRODUCT_RANDOM_ITEM_READER";
+    public static final String BEAN_NAME = "PRODUCT_LIST_ITEM_READER";
 
     @Bean(BEAN_NAME)
     @StepScope

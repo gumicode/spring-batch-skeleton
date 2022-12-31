@@ -1,6 +1,7 @@
 package com.example.skeleton.product.adapter.in.batch;
 
-import com.example.skeleton.product.adapter.in.batch.step.ProductRandomCreateStep;
+import com.example.skeleton.product.adapter.in.batch.step.ProductExportCsvStep;
+import com.example.skeleton.product.adapter.in.batch.step.ProductSaveRandomStep;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.batch.core.Job;
@@ -14,16 +15,17 @@ import java.util.Map;
 @Slf4j
 @Configuration
 @RequiredArgsConstructor
-public class ProductRandomCreateJob {
+public class ProductExportCsvJob {
 
-    public static final String BEAN_NAME = "PRODUCT_RANDOM_CREATE_JOB";
+    public static final String BEAN_NAME = "PRODUCT_EXPORT_CSV_JOB";
     private final JobBuilderFactory jobBuilderFactory;
     private final Map<String, Step> steps;
 
     @Bean(BEAN_NAME)
     public Job job() {
         return jobBuilderFactory.get(BEAN_NAME)
-                .start(steps.get(ProductRandomCreateStep.BEAN_NAME))
+                .start(steps.get(ProductSaveRandomStep.BEAN_NAME))
+                .next(steps.get(ProductExportCsvStep.BEAN_NAME))
                 .build();
     }
 }

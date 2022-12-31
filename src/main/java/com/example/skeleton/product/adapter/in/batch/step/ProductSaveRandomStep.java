@@ -1,8 +1,8 @@
 package com.example.skeleton.product.adapter.in.batch.step;
 
 import com.example.skeleton.common.CommonBatchParameter;
-import com.example.skeleton.product.adapter.in.batch.step.reader.ProductRandomItemReader;
-import com.example.skeleton.product.adapter.in.batch.step.writer.ProductInsertBatchItemWriter;
+import com.example.skeleton.product.adapter.in.batch.step.reader.ProductListItemReader;
+import com.example.skeleton.product.adapter.in.batch.step.writer.ProductJdbcBatchItemWriter;
 import com.example.skeleton.product.adapter.out.persistence.entity.ProductEntity;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -21,9 +21,9 @@ import java.util.Map;
 @Slf4j
 @Configuration
 @RequiredArgsConstructor
-public class ProductRandomCreateStep {
+public class ProductSaveRandomStep {
 
-    public static final String BEAN_NAME = "PRODUCT_RANDOM_CREATE_STEP";
+    public static final String BEAN_NAME = "PRODUCT_SAVE_RANDOM_STEP";
     private final StepBuilderFactory stepBuilderFactory;
     private final Map<String, ItemReader<ProductEntity>> productItemReaders;
     private final Map<String, ItemWriter<ProductEntity>> productItemWriters;
@@ -32,8 +32,8 @@ public class ProductRandomCreateStep {
     public Step step() {
         return stepBuilderFactory.get(BEAN_NAME)
                 .<ProductEntity, ProductEntity>chunk(CommonBatchParameter.CHUNK)
-                .reader(productItemReaders.get(ProductRandomItemReader.BEAN_NAME))
-                .writer(productItemWriters.get(ProductInsertBatchItemWriter.BEAN_NAME))
+                .reader(productItemReaders.get(ProductListItemReader.BEAN_NAME))
+                .writer(productItemWriters.get(ProductJdbcBatchItemWriter.BEAN_NAME))
                 .build();
     }
 }

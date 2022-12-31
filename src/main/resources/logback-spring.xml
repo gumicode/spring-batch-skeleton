@@ -27,9 +27,8 @@
         <logger name="org.springframework.batch" level="INFO" />
 <!--        <logger name="org.springframework.jdbc" level="TRACE" />-->
         <logger name="org.hibernate.SQL" level="DEBUG"/>
-        <logger name="org.hibernate.type.descriptor.sql.BasicBinder" level="TRACE"/>
         <logger name="org.hibernate.tool.hbm2ddl" level="DEBUG"/>
-        <logger name="org.hibernate.type.descriptor.sql" level="TRACE" /> <!-- Hibernate 4,5 -->
+        <logger name="org.hibernate.type.descriptor.sql" level="DEBUG" /> <!-- Hibernate 4,5 -->
         <logger name="org.hibernate.orm.jdbc.bind" level="TRACE" /> <!-- Hibernate 6 -->
         <logger name="org.hibernate.stat" level="DEBUG" />
         <logger name="org.hibernate.SQL_SLOW" level="INFO" />

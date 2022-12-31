@@ -1,6 +1,6 @@
 package com.example.skeleton.product.adapter.in.batch;
 
-import com.example.skeleton.product.adapter.in.batch.step.ProductCopyStep;
+import com.example.skeleton.product.adapter.in.batch.step.ProductSaveCopyStep;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.batch.core.Job;
@@ -17,16 +17,16 @@ import java.util.Map;
 @Slf4j
 @Configuration
 @RequiredArgsConstructor
-public class ProductCopyJob {
+public class ProductSaveCopyJob {
 
-    public static final String BEAN_NAME = "PRODUCT_COPY_JOB";
+    public static final String BEAN_NAME = "PRODUCT_SAVE_COPY_JOB";
     private final JobBuilderFactory jobBuilderFactory;
     private final Map<String, Step> steps;
 
     @Bean(BEAN_NAME)
     public Job job() {
         return jobBuilderFactory.get(BEAN_NAME)
-                .start(steps.get(ProductCopyStep.BEAN_NAME))
+                .start(steps.get(ProductSaveCopyStep.BEAN_NAME))
                 .build();
     }
 }

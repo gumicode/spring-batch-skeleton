@@ -1,8 +1,7 @@
 package com.example.skeleton;
 
-import com.example.skeleton.feature.adapter.in.batch.ExceptionHandlerJob;
-import com.example.skeleton.product.adapter.in.batch.ProductRandomCreateJob;
-import com.example.skeleton.product.adapter.in.batch.step.ProductRandomCreateStep;
+import com.example.skeleton.product.adapter.in.batch.ProductExportCsvJob;
+import com.example.skeleton.product.adapter.in.batch.ProductSaveRandomJob;
 import lombok.RequiredArgsConstructor;
 import org.springframework.batch.core.Job;
 import org.springframework.batch.core.JobParameters;
@@ -33,6 +32,6 @@ public class JobRunner implements ApplicationRunner {
         jobParametersBuilder.addString("string", UUID.randomUUID().toString());
         JobParameters jobParameters = jobParametersBuilder.toJobParameters();
 
-        jobLauncher.run(jobs.get(ProductRandomCreateJob.BEAN_NAME), jobParameters);
+        jobLauncher.run(jobs.get(ProductExportCsvJob.BEAN_NAME), jobParameters);
     }
 }
