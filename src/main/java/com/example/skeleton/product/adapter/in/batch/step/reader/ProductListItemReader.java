@@ -33,7 +33,7 @@ public class ProductListItemReader {
             String name = NamingUtil.food();
             String image = code + ".png";
             ProductEntity productEntity = ProductEntity.builder()
-                    .id((long) i)
+//                    .id((long) i+1)
                     .createDatetime(LocalDateTime.now())
                     .updateDatetime(LocalDateTime.now())
                     .deleted(false)
