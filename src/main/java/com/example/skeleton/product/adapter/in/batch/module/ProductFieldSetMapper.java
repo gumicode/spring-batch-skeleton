@@ -1,12 +1,16 @@
 package com.example.skeleton.product.adapter.in.batch.module;
 
 import com.example.skeleton.product.adapter.in.model.Product;
+import lombok.RequiredArgsConstructor;
 import org.springframework.batch.item.file.mapping.FieldSetMapper;
 import org.springframework.batch.item.file.transform.FieldSet;
+import org.springframework.context.annotation.Configuration;
 import org.springframework.lang.NonNull;
 
 import java.time.LocalDateTime;
 
+@Configuration
+@RequiredArgsConstructor
 public class ProductFieldSetMapper implements FieldSetMapper<Product> {
     @Override
     public Product mapFieldSet(@NonNull final FieldSet fieldSet) {

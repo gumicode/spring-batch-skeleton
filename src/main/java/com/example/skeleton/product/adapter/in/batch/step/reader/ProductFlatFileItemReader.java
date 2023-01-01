@@ -28,7 +28,9 @@ public class ProductFlatFileItemReader {
                 .comments() // 해당 코멘트 기호가 있는 라인은 무시한다. addComment 로 사용해도 된다..encoding("UTF-8") // 인코딩
                 .linesToSkip(1) // 파일상단에 있는 무시할 라인 수
                 .saveState(true) // 상태 정보를 저장할 것인지 설정, 멀티스레드 환경에서는 false 지정
-                .fieldSetMapper(new ProductFieldSetMapper())
+                .fieldSetMapper(new ProductFieldSetMapper()) // default : BeanWrapperFieldSetMapper
+//                .lineMapper() // default : DefaultLineMapper
+//                .lineTokenizer() // default : AbstractLineTokenizer
                 .build();
 
         // strict, targetType, fieldSetMapper 는 모두 하나의 세트로 동작한다. fieldSetMapper 를 커스텀으로 구현해놓고 strict 값을 별도로 주면 동작하지않으니 주의
