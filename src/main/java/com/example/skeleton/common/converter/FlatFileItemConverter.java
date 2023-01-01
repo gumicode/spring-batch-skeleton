@@ -4,15 +4,11 @@ import com.google.common.base.CaseFormat;
 import com.google.common.io.Files;
 import lombok.extern.slf4j.Slf4j;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
 import java.io.IOException;
 import java.lang.reflect.Field;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.Path;
-import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.List;
 import java.util.Objects;
 import java.util.stream.Collectors;
 

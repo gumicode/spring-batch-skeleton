@@ -20,7 +20,7 @@ public class JacksonConfiguration {
         return new ObjectMapper()
                 .configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false)
                 .configure(DeserializationFeature.ACCEPT_EMPTY_STRING_AS_NULL_OBJECT, true)
-                .registerModule(javaTimeModule())
+//                .registerModule(javaTimeModule())
                 .disable(SerializationFeature.WRITE_DATES_AS_TIMESTAMPS);
     }
 

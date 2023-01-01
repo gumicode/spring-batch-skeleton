@@ -1,10 +1,6 @@
 package com.example.skeleton;
 
-import com.example.skeleton.product.adapter.in.batch.ProductExportCsvJob;
-import com.example.skeleton.product.adapter.in.batch.ProductImportCsvJob;
-import com.example.skeleton.product.adapter.in.batch.ProductSaveRandomJob;
-import com.example.skeleton.product.adapter.in.batch.step.ProductImportCsvStep;
-import com.example.skeleton.product.adapter.in.batch.step.ProductSaveRandomStep;
+import com.example.skeleton.product.adapter.in.batch.*;
 import lombok.RequiredArgsConstructor;
 import org.springframework.batch.core.Job;
 import org.springframework.batch.core.JobParameters;

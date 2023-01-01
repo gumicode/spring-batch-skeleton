@@ -1,6 +1,7 @@
 package com.example.skeleton.product.adapter.in.batch;
 
 import com.example.skeleton.product.adapter.in.batch.step.ProductSaveCopyStep;
+import com.example.skeleton.product.adapter.in.batch.step.ProductSaveRandomStep;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.batch.core.Job;
@@ -26,7 +27,8 @@ public class ProductSaveCopyJob {
     @Bean(BEAN_NAME)
     public Job job() {
         return jobBuilderFactory.get(BEAN_NAME)
-                .start(steps.get(ProductSaveCopyStep.BEAN_NAME))
+                .start(steps.get(ProductSaveRandomStep.BEAN_NAME))
+                .next(steps.get(ProductSaveCopyStep.BEAN_NAME))
                 .build();
     }
 }

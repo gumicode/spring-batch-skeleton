@@ -1,6 +1,7 @@
 package com.example.skeleton.product.adapter.in.batch.step.writer;
 
 import com.example.skeleton.common.converter.FlatFileItemConverter;
+import com.example.skeleton.product.adapter.in.model.Product;
 import com.example.skeleton.product.adapter.out.persistence.entity.ProductEntity;
 import lombok.RequiredArgsConstructor;
 import org.springframework.batch.core.configuration.annotation.StepScope;
@@ -18,16 +19,16 @@ public class ProductFlatFileItemWriter {
 
     @Bean(BEAN_NAME)
     @StepScope
-    public FlatFileItemWriter<ProductEntity> itemWriter() {
-        return new FlatFileItemWriterBuilder<ProductEntity>()
+    public FlatFileItemWriter<Product> itemWriter() {
+        return new FlatFileItemWriterBuilder<Product>()
                 .name(BEAN_NAME)
                 .resource(new FileSystemResource("export/product.csv"))
                 .shouldDeleteIfEmpty(false) // 값이 없다면 삭제할지 정하는 옵션, true : 삭제 / false : 삭제 안함
                 .append(false) // 동일한 파일이 있을 경우 row 를 추가할 건지, 삭제후 새로 작성할 건지 정하는 옵션, true : row 추가 / false : 삭제후 다시 작성
                 .delimited()
                 .delimiter(",") // 컬럼 구분값
-                .names(FlatFileItemConverter.writerNames(ProductEntity.class))
-                .headerCallback(writer -> writer.write(FlatFileItemConverter.writerHeaders(ProductEntity.class, ",")))
+                .names(FlatFileItemConverter.writerNames(Product.class))
+                .headerCallback(writer -> writer.write(FlatFileItemConverter.writerHeaders(Product.class, ",")))
                 .build();
     }
 }
