@@ -7,6 +7,7 @@ import com.example.skeleton.product.adapter.out.persistence.entity.ProductEntity
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.batch.core.Step;
+import org.springframework.batch.core.configuration.annotation.JobScope;
 import org.springframework.batch.core.configuration.annotation.StepBuilderFactory;
 import org.springframework.batch.item.ItemReader;
 import org.springframework.batch.item.ItemWriter;
@@ -26,6 +27,7 @@ public class ProductSaveCopyStep {
     private final Map<String, ItemWriter<ProductEntity>> productItemWriters;
 
     @Bean(BEAN_NAME)
+    @JobScope
     public Step step() {
         return stepBuilderFactory.get(BEAN_NAME)
                 .<ProductEntity, ProductEntity>chunk(CommonBatchParameter.CHUNK)

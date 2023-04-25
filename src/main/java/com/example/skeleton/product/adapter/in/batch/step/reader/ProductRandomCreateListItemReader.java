@@ -15,7 +15,7 @@ import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 @Configuration
-public class ProductListItemReader {
+public class ProductRandomCreateListItemReader {
 
     public static final String BEAN_NAME = "PRODUCT_LIST_ITEM_READER";
 
@@ -33,7 +33,7 @@ public class ProductListItemReader {
             String name = NamingUtil.food();
             String image = code + ".png";
             ProductEntity productEntity = ProductEntity.builder()
-//                    .id((long) i+1)
+                    .id((long) i+1)
                     .createDatetime(LocalDateTime.now())
                     .updateDatetime(LocalDateTime.now())
                     .deleted(false)

@@ -4,6 +4,7 @@ import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.batch.core.JobParameter;
 import org.springframework.batch.core.Step;
+import org.springframework.batch.core.configuration.annotation.JobScope;
 import org.springframework.batch.core.configuration.annotation.StepBuilderFactory;
 import org.springframework.batch.repeat.RepeatStatus;
 import org.springframework.context.annotation.Bean;
@@ -20,6 +21,7 @@ public class PrintJobParameterStep {
 	private final StepBuilderFactory stepBuilderFactory;
 
 	@Bean(BEAN_NAME)
+	@JobScope
 	public Step step() {
 		return stepBuilderFactory.get(BEAN_NAME)
 				.tasklet((contribution, chunkContext) -> {

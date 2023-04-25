@@ -3,11 +3,13 @@ package com.example.skeleton.feature.adapter.in.batch.step.decider;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.batch.core.JobExecution;
 import org.springframework.batch.core.StepExecution;
+import org.springframework.batch.core.configuration.annotation.JobScope;
 import org.springframework.batch.core.job.flow.FlowExecutionStatus;
 import org.springframework.batch.core.job.flow.JobExecutionDecider;
 import org.springframework.stereotype.Component;
 
 @Slf4j
+@JobScope
 @Component(EvenOddDecider.BEAN_NAME)
 public class EvenOddDecider implements JobExecutionDecider {
 

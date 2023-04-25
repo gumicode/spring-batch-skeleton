@@ -18,7 +18,7 @@ import static com.example.skeleton.product.adapter.out.persistence.entity.QProdu
 @RequiredArgsConstructor
 public class ProductQuerydslNoOffsetItemReader {
 
-    public static final String BEAN_NAME = "PRODUCT_ITEM_READER";
+    public static final String BEAN_NAME = "PRODUCT_QUERYDSL_NO_OFFSET_ITEM_READER";
     private final EntityManagerFactory entityManagerFactory;
 
     @Bean(BEAN_NAME)

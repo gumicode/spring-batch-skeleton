@@ -1,6 +1,7 @@
 package com.example.skeleton.common.persistence.entity;
 
 import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.experimental.SuperBuilder;
@@ -12,7 +13,7 @@ import javax.persistence.*;
 import java.time.LocalDateTime;
 
 @Getter
-@SuperBuilder
+@SuperBuilder(toBuilder = true)
 @MappedSuperclass
 @AllArgsConstructor
 @NoArgsConstructor
@@ -20,9 +21,11 @@ import java.time.LocalDateTime;
 public abstract class BaseEntity {
 
     @CreatedDate
+    @Builder.Default
     private LocalDateTime createDatetime = LocalDateTime.now();
 
     @LastModifiedDate
+    @Builder.Default
     private LocalDateTime updateDatetime = LocalDateTime.now();
 
     private Boolean deleted = false;

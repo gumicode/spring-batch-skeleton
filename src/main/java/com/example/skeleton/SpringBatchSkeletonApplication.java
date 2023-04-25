@@ -9,7 +9,8 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 public class SpringBatchSkeletonApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(SpringBatchSkeletonApplication.class, args);
+//		SpringApplication.run(SpringBatchSkeletonApplication.class, args);
+		System.exit(SpringApplication.exit(SpringApplication.run(SpringBatchSkeletonApplication.class, args))); // 멀티 스레드 사용시
 	}
 
 }

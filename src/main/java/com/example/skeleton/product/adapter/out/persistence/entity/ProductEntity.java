@@ -1,10 +1,7 @@
 package com.example.skeleton.product.adapter.out.persistence.entity;
 
 import com.example.skeleton.common.persistence.entity.BaseEntity;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 import lombok.experimental.SuperBuilder;
 
 import javax.persistence.*;
@@ -13,7 +10,7 @@ import javax.persistence.*;
 @Setter
 @Entity
 @Table(name = "product")
-@SuperBuilder
+@SuperBuilder(toBuilder = true)
 @AllArgsConstructor
 @NoArgsConstructor
 public class ProductEntity extends BaseEntity {

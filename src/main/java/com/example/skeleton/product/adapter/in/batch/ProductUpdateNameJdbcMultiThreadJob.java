@@ -1,8 +1,8 @@
 package com.example.skeleton.product.adapter.in.batch;
 
 import com.example.skeleton.product.adapter.in.batch.listener.PrintCountdownJobExecutionListener;
-import com.example.skeleton.product.adapter.in.batch.step.ProductExportCsvStep;
-import com.example.skeleton.product.adapter.in.batch.step.ProductSaveRandomJdbcStep;
+import com.example.skeleton.product.adapter.in.batch.step.ProductSaveRandomJdbcJobStep;
+import com.example.skeleton.product.adapter.in.batch.step.ProductUpdateNameJdbcMultiThreadStep;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.batch.core.Job;
@@ -14,12 +14,17 @@ import org.springframework.context.annotation.Configuration;
 
 import java.util.Map;
 
+/**
+ * 멀티쓰레드 STEP 으로 JDBC Batch write 하는 JOB
+ * - STEP1. 랜덤으로 ProductEntity 를 만들어서 DB 에 넣는다.
+ * - STEP2. DB 에서 병렬로 읽어들어 NAME 을 수정하여 JDBC 로 업데이트 한다.
+ */
 @Slf4j
 @Configuration
 @RequiredArgsConstructor
-public class ProductExportCsvJob {
+public class ProductUpdateNameJdbcMultiThreadJob {
 
-    public static final String BEAN_NAME = "PRODUCT_EXPORT_CSV_JOB";
+    public static final String BEAN_NAME = "PRODUCT_SAVE_RANDOM_JDBC_MULTI_THREAD_JOB";
     private final JobBuilderFactory jobBuilderFactory;
     private final Map<String, Step> steps;
     private final Map<String, JobExecutionListener> jobListeners;
@@ -28,8 +33,8 @@ public class ProductExportCsvJob {
     public Job job() {
         return jobBuilderFactory.get(BEAN_NAME)
                 .listener(jobListeners.get(PrintCountdownJobExecutionListener.BEAN_NAME))
-                .start(steps.get(ProductSaveRandomJdbcStep.BEAN_NAME))
-                .next(steps.get(ProductExportCsvStep.BEAN_NAME))
+                .start(steps.get(ProductSaveRandomJdbcJobStep.BEAN_NAME))
+                .next(steps.get(ProductUpdateNameJdbcMultiThreadStep.BEAN_NAME))
                 .build();
     }
 }

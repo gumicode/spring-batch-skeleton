@@ -1,5 +1,6 @@
 package com.example.skeleton;
 
+import com.example.skeleton.feature.adapter.in.batch.*;
 import com.example.skeleton.product.adapter.in.batch.*;
 import lombok.RequiredArgsConstructor;
 import org.springframework.batch.core.Job;
@@ -31,6 +32,6 @@ public class JobRunner implements ApplicationRunner {
         jobParametersBuilder.addString("string", UUID.randomUUID().toString());
         JobParameters jobParameters = jobParametersBuilder.toJobParameters();
 
-        jobLauncher.run(jobs.get(ProductSaveRandomJob2.BEAN_NAME), jobParameters);
+        jobLauncher.run(jobs.get(ProductUpdateNameJdbcMultiThreadJob.BEAN_NAME), jobParameters);
     }
 }
