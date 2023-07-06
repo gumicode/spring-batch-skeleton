@@ -19,6 +19,6 @@ public class PrintCountdownJobExecutionListener implements JobExecutionListener 
 
 	@Override
 	public void afterJob(JobExecution jobExecution) {
-		log.info("***** total time taken : {}ms", System.currentTimeMillis() - this.startTime);
+		log.info("***** end job, time taken : {}ms", System.currentTimeMillis() - this.startTime);
 	}
 }

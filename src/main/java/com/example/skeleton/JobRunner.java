@@ -1,7 +1,7 @@
 package com.example.skeleton;
 
-import com.example.skeleton.feature.adapter.in.batch.*;
-import com.example.skeleton.product.adapter.in.batch.*;
+import com.example.skeleton.product.adapter.in.batch.ProductUpdateNameJdbcMultiThreadJob;
+import com.example.skeleton.product.adapter.in.batch.ProductUpdateNameJdbcPartitionMultiThreadJob;
 import lombok.RequiredArgsConstructor;
 import org.springframework.batch.core.Job;
 import org.springframework.batch.core.JobParameters;
@@ -32,6 +32,6 @@ public class JobRunner implements ApplicationRunner {
         jobParametersBuilder.addString("string", UUID.randomUUID().toString());
         JobParameters jobParameters = jobParametersBuilder.toJobParameters();
 
-        jobLauncher.run(jobs.get(ProductUpdateNameJdbcMultiThreadJob.BEAN_NAME), jobParameters);
+        jobLauncher.run(jobs.get(ProductUpdateNameJdbcPartitionMultiThreadJob.BEAN_NAME), jobParameters);
     }
 }

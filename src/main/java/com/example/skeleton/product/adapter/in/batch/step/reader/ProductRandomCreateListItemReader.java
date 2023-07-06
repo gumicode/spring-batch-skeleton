@@ -25,7 +25,7 @@ public class ProductRandomCreateListItemReader {
         return new ListItemReader<>(generateProductEntities());
     }
 
-    private List<ProductEntity> generateProductEntities() {
+    public List<ProductEntity> generateProductEntities() {
 
         ProductEntity[] entities = new ProductEntity[CommonBatchParameter.RANDOM_CREATE_SIZE];
         for (int i = 0; i < CommonBatchParameter.RANDOM_CREATE_SIZE; i++) {
