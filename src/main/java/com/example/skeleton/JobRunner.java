@@ -1,5 +1,6 @@
 package com.example.skeleton;
 
+import com.example.skeleton.product.adapter.in.batch.ProductProjectionUpdateNameJdbcMultiThreadJob;
 import com.example.skeleton.product.adapter.in.batch.ProductUpdateNameJdbcMultiThreadJob;
 import com.example.skeleton.product.adapter.in.batch.ProductUpdateNameJdbcPartitionMultiThreadJob;
 import lombok.RequiredArgsConstructor;
@@ -32,6 +33,6 @@ public class JobRunner implements ApplicationRunner {
         jobParametersBuilder.addString("string", UUID.randomUUID().toString());
         JobParameters jobParameters = jobParametersBuilder.toJobParameters();
 
-        jobLauncher.run(jobs.get(ProductUpdateNameJdbcPartitionMultiThreadJob.BEAN_NAME), jobParameters);
+        jobLauncher.run(jobs.get(ProductProjectionUpdateNameJdbcMultiThreadJob.BEAN_NAME), jobParameters);
     }
 }
